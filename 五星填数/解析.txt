@@ -1,0 +1,45 @@
+int a[] = {1,2,3,4,5,6,8,9,10,12};
+int b[10],count = 0,c[10];
+
+/*
+    0
+1  2 3  4
+  5   6
+	7
+ 8     9
+*/
+//b2+b3+b4 == b5+b7+b9    b2+b5+b8 == b3+b6+b9   b3+b2+b1 == b6+b7+b8   b6+b3+b0 == b7+b5+b1   b7+b6+b4 == b5+b2+b0
+int pd();
+void xhwjx(int);
+int main()
+{
+	xhwjx(0);
+	printf("%d\n",count/10);
+	//除十原因： 题上说旋转或镜像后相同的算同一种填法，所以原来的一种方法可以推出另外九种不能使用，也就是说十种方法只能适用一种 
+	return 0;
+}
+int pd()
+{
+	if(b[2]+b[3]+b[4] == b[5]+b[7]+b[9] && b[2]+b[5]+b[8] == b[3]+b[6]+b[9] && b[3]+b[2]+b[1] == b[6]+b[7]+b[8] && b[6]+b[3]+b[0] == b[7]+b[5]+b[1] && b[7]+b[6]+b[4] == b[5]+b[2]+b[0])
+	return 1;
+	return 0;
+}
+
+void xhwjx(n)
+{
+	register int i;
+	if(n == 10)
+	if(pd())count++;
+	else return;
+	
+	for(i = 0;i < 10;i++)
+	{
+		if(!c[i])//数组把未赋值的参数默认为零，若有其他问题，可以用memset把c的每一项初始化零即可 
+		{
+			c[i] = 1;
+			b[n] = a[i];
+			xhwjx(n+1);
+			c[i] = 0;
+		}
+	}
+}
