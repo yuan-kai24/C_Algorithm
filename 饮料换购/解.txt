@@ -1,0 +1,16 @@
+#include <stdio.h>
+int main() {
+	int n,u,count,count2;
+	scanf("%d",&n);
+	u = (n-(n%3))/3;
+	count2 = u+n%3;
+	count = n+u;	
+	while(count2 >= 3)
+	{	
+		u = (count2-(count2%3))/3;
+		count2 = u+count2%3;
+		count += u;		
+	}
+	printf("\n%d\n",count);		
+	return 0;
+}
